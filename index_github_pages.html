@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Géomancie Football — V6 OPÉRATIONNEL</title>
+<style>
+/* ===== V4 — Atmosphère géomantique ===== */
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.13;
+  background-image:
+    radial-gradient(circle at 12% 18%, transparent 0 2px, rgba(231,189,90,.7) 2.5px 3px, transparent 3.5px),
+    radial-gradient(circle at 78% 70%, transparent 0 2px, rgba(75,156,255,.65) 2.5px 3px, transparent 3.5px),
+    linear-gradient(90deg, transparent 49.5%, rgba(231,189,90,.16) 50%, transparent 50.5%),
+    linear-gradient(0deg, transparent 49.5%, rgba(231,189,90,.16) 50%, transparent 50.5%);
+  background-size:86px 86px,112px 112px,56px 56px,56px 56px;
+  mask-image:radial-gradient(ellipse at center, black 20%, transparent 82%);
+}
+body::after{
+  content:"•  •    •    •   •    •  •    •    •    •";
+  position:fixed;inset:auto 0 18px 0;text-align:center;
+  color:#e7bd5a;font:18px Georgia,serif;letter-spacing:16px;
+  opacity:.16;pointer-events:none;z-index:-1;
+}
+.app{position:relative;overflow:hidden}
+.app::before{
+  content:"";
+  position:absolute;left:240px;top:-160px;width:620px;height:620px;
+  border:1px solid rgba(231,189,90,.08);border-radius:50%;
+  box-shadow:0 0 0 34px rgba(231,189,90,.025),0 0 0 68px rgba(231,189,90,.018);
+  pointer-events:none;
+}
+.side{
+  background:linear-gradient(180deg,rgba(7,17,31,.98),rgba(9,22,38,.94));
+  box-shadow:12px 0 40px rgba(0,0,0,.2);
+}
+.logo{
+  position:relative;
+  box-shadow:0 0 30px rgba(57,212,154,.18);
+}
+.logo::after{
+  content:"";
+  position:absolute;inset:5px;border:1px solid rgba(255,255,255,.28);
+  border-radius:10px;
+}
+.card{
+  backdrop-filter:blur(10px);
+  background:linear-gradient(145deg,rgba(13,30,48,.92),rgba(7,19,32,.91));
+  box-shadow:0 20px 55px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.025);
+}
+.top h1{letter-spacing:-.025em}
+.top::after{
+  content:"✦  ◇  •  ◇  ✦";
+  display:block;color:#e7bd5a;opacity:.42;margin-top:8px;font-size:12px;letter-spacing:8px;
+}
+.team{
+  position:relative;
+  background:linear-gradient(145deg,#0d2034,#091626);
+}
+.team::before{
+  content:"";
+  position:absolute;inset:7px;border:1px solid rgba(75,156,255,.07);
+  border-radius:10px;pointer-events:none;
+}
+.board{
+  position:relative;overflow:hidden;
+}
+.board::before{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;opacity:.08;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 14px,rgba(231,189,90,.5) 15px 16px,transparent 17px 30px);
+}
+.house{
+  position:relative;z-index:1;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.house:hover{
+  transform:translateY(-2px);
+  border-color:#3b6386;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+.sig{font-size:13px}
+.result{
+  position:relative;
+  overflow:hidden;
+}
+.result::after{
+  content:"☽  ✦  ◇  ✦  ☾";
+  position:absolute;right:16px;bottom:10px;color:#e7bd5a;opacity:.13;font-size:24px;letter-spacing:6px;
+}
+.verdict{letter-spacing:-.02em}
+.analyze{
+  position:relative;overflow:hidden;
+  box-shadow:0 8px 24px rgba(57,212,154,.12);
+}
+.analyze::after{
+  content:"";
+  position:absolute;top:0;left:-80px;width:60px;height:100%;
+  transform:skewX(-18deg);
+  background:rgba(255,255,255,.18);
+  transition:left .45s ease;
+}
+.analyze:hover::after{left:110%}
+.eyebrow{display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"◇";color:var(--gold);font-size:12px}
+:root{--bg:#07111f;--panel:#0c1a2b;--panel2:#091626;--line:#1b3148;--text:#eef5ff;--muted:#8398ae;--green:#39d49a;--blue:#4b9cff;--gold:#e7bd5a;--red:#ef6b78}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#102a45 0,#07111f 38%);color:var(--text);font:14px Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{min-height:100vh;display:flex}.side{width:240px;background:#091626;border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column}.brand{display:flex;gap:11px;align-items:center;margin-bottom:28px}.logo{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),var(--blue));font-size:22px}.brand b{font-size:15px}.brand small{display:block;color:#71869d;font-size:9px;letter-spacing:.1em;margin-top:3px}.nav{display:grid;gap:6px}.nav button{border:0;background:none;color:#9cafc3;padding:12px;border-radius:10px;text-align:left;cursor:pointer}.nav button.active,.nav button:hover{background:#12263d;color:#fff}.source{margin-top:auto;color:#667d94;font-size:10px;line-height:1.5}.main{width:100%;max-width:1400px;margin:auto;padding:28px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:22px}.eyebrow{color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:800}h1{margin:4px 0;font-size:28px}.muted{color:var(--muted);font-size:12px}.badge{border:1px solid #25415d;background:#0c1d30;border-radius:999px;padding:8px 12px;color:#a9bdd0;font-size:11px}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.75fr);gap:18px}.card{background:rgba(12,26,43,.94);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 16px 40px #0003}.card h2{margin:0 0 4px;font-size:17px}.teams{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:12px;margin:20px 0}.team{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}.team input{width:100%;background:none;border:0;color:#fff;text-align:center;font-weight:800;font-size:15px;outline:0}.vs{text-align:center;color:#6d849b;font-weight:900}.figurePick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.selectbox{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:12px}.selectbox label{display:block;color:#8ea4ba;font-size:10px;margin-bottom:7px}.selectbox select{width:100%;background:#0d2034;color:#fff;border:1px solid #25415d;border-radius:8px;padding:9px;outline:0}.analyze{width:100%;margin-top:14px;border:0;border-radius:11px;padding:13px;background:linear-gradient(90deg,var(--green),var(--blue));color:#fff;font-weight:900;cursor:pointer}.board{margin-top:18px;background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:15px}.board h3{margin:0 0 12px;font-size:13px}.houses{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.house{border:1px solid #203b55;background:#0b1b2d;border-radius:9px;padding:8px;min-height:62px}.house small{display:block;color:#6f859c;font-size:9px}.house b{font-size:11px;display:block;margin:4px 0}.sig{font-family:monospace;letter-spacing:2px;color:#b9d3eb}.result{margin-top:18px;padding:16px;border-radius:14px;background:#091626;border:1px solid var(--line)}.resultHead{display:flex;justify-content:space-between;align-items:center}.pill{border-radius:999px;padding:6px 9px;font-size:10px;font-weight:900}.good{background:#123b32;color:#65e1ae}.bad{background:#3c1c26;color:#ff8995}.neutral{background:#273448;color:#a9bdd0}.verdict{font-size:25px;font-weight:900;margin:10px 0}.reason{color:#a5b8ca;line-height:1.6;font-size:12px}.facts{display:grid;gap:10px;margin-top:14px}.fact{padding:11px;border:1px solid var(--line);border-radius:11px;background:#091626}.fact b{font-size:11px}.fact p{margin:4px 0 0;color:#8499ae;font-size:11px;line-height:1.45}.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.mini{padding:10px;border:1px solid var(--line);border-radius:10px}.mini b{font-size:11px}.mini span{display:block;color:#7e93a8;font-size:10px;margin-top:3px}.notice{margin-top:18px;padding:12px;border-left:3px solid var(--gold);background:#181a16;color:#b8b5a3;font-size:10px;line-height:1.5}@media(max-width:900px){.side{width:70px}.brand div:last-child,.nav span{display:none}.nav button{text-align:center}.layout{grid-template-columns:1fr}}@media(max-width:600px){.main{padding:15px}.teams{grid-template-columns:1fr}.vs{display:none}.figurePick{grid-template-columns:1fr}.houses{grid-template-columns:repeat(2,1fr)}.top{display:block}.badge{display:inline-block;margin-top:12px}}
+
+.geomCode{width:100%;background:#0d2034;color:#fff;border:1px solid #25415d;border-radius:8px;padding:11px;text-align:center;letter-spacing:.25em;font:800 18px monospace;outline:0}
+.geomCode:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(57,212,154,.09)}
+.codeHint{display:block;color:#667d94;font-size:9px;margin-top:6px;text-align:center}
+
+.ruleBadge{display:inline-block;margin:6px 0;padding:6px 10px;border:1px solid rgba(231,189,90,.25);border-radius:999px;color:#e7bd5a;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+ <div class="brand"><div class="logo">🔮</div><div><b>GÉOMANCIE</b><small>FOOTBALL ENGINE</small></div></div>
+ <nav class="nav">
+  <button id="analyze" type="button" class="active">⚽ <span>Nouvelle analyse</span></button>
+  <button>📚 <span>16 figures</span></button>
+  <button>📜 <span>Historique</span></button>
+  <button>⚙️ <span>Réglages</span></button>
+ </nav>
+ <div class="source">Moteur FINAL<br>Référentiel documentaire local<br>Pas de données externes.</div>
+</aside>
+
+<main class="main">
+ <div class="top">
+  <div><div class="eyebrow">Consultation</div><h1>Analyse géomantique d'un match</h1><div class="muted">Saisis directement les codes géomantiques à quatre chiffres : M1, M7 et M16.</div></div>
+  <div class="badge">● Moteur prêt</div>
+ </div>
+
+ <div class="layout">
+  <section class="card">
+   <h2>⚽ Match</h2><div class="muted">✦ Consultation géomantique · lecture des signes · décision A / B</div><div class="muted">Les noms des équipes sont libres : la lecture porte sur les figures.</div>
+   <div class="teams">
+    <div class="team"><input id="teamA" value="Équipe A"></div><div class="vs">VS</div><div class="team"><input id="teamB" value="Équipe B"></div>
+   </div>
+   <div class="figurePick">
+     <div class="selectbox"><label>M1 — côté Équipe A</label><input id="m1Code" class="geomCode" inputmode="numeric" maxlength="4" pattern="[12]{4}" placeholder="ex. 1211" autocomplete="off"><small class="codeHint">Code à 4 chiffres · 1 ou 2</small></div>
+     <div class="selectbox"><label>M7 — côté Équipe B</label><input id="m7Code" class="geomCode" inputmode="numeric" maxlength="4" pattern="[12]{4}" placeholder="ex. 2122" autocomplete="off"><small class="codeHint">Code à 4 chiffres · 1 ou 2</small></div>
+     <div class="selectbox"><label>M16 — figure finale</label><input id="m16Code" class="geomCode" inputmode="numeric" maxlength="4" pattern="[12]{4}" placeholder="ex. 1221" autocomplete="off"><small class="codeHint">Code à 4 chiffres · 1 ou 2</small></div>
+    </div>
+   <div id="versionBadge" style="text-align:center;margin:10px 0;font-size:11px;letter-spacing:.08em;color:#e7bd5a">MOTEUR V6 • CHROME • OPÉRATIONNEL</div><button class="analyze" type="button" id="runAnalysis">ANALYSER</button>
+
+   <div class="board">
+    <h3>Tableau de consultation — aperçu</h3>
+    <div id="houses" class="houses"></div>
+   </div>
+
+   <div id="result" class="result">
+     <div id="decisionDetails" class="facts"></div>
+    <div class="resultHead"><b>Verdict</b><span id="pill" class="pill neutral">EN ATTENTE</span></div>
+    <div id="verdict" class="verdict">Choisis M1, M7 et M16.</div>
+    <div id="reason" class="reason">La V2 applique uniquement les propriétés documentées dans la source consultable. Elle n'invente pas de probabilités.</div>
+   </div>
+  </section>
+
+  <aside>
+   <section class="card">
+    <h2>📚 Référentiel des 16 signes</h2><div class="muted">Propriétés documentées dans l'étude disponible.</div>
+    <div id="facts" class="facts"></div>
+   </section>
+   <section class="card" style="margin-top:18px">
+    <h2>🧭 Règles utilisées</h2>
+    <div class="legend">
+     <div class="mini"><b>8 fastes</b><span>Adaika, Utuba dahili, Al bayada, Ahriki, Nasara haraji, Ackaf, Nasara dahili, Kabula dahili</span></div>
+     <div class="mini"><b>8 néfastes</b><span>Al kausaji, Kabula haraji, Al humura, Al mankusu, Ijitimay, Utuba haraji, Nakiya, Jamaa</span></div>
+    </div>
+    <div class="notice">Important : le PDF Kitab fi ilm al-Raml est bien présent dans tes fichiers, mais son scan ne fournit actuellement aucun texte lisible à l'outil. Je ne vais donc pas attribuer à ce livre une règle que je n'ai pas pu vérifier. Le moteur sera complété dès que son contenu est accessible en texte/images exploitables.</div>
+   </section>
+  </aside>
+ </div>
+</main>
+</div>
+
+
+
+<script>
+(function () {
+  "use strict";
+
+  const FIGURES = [
+    {name:"Via",code:"1111",element:"Eau",nature:"Neutre / Mobile",orientation:"Sortie",score:0},
+    {name:"Populus",code:"2222",element:"Eau",nature:"Neutre / Stable",orientation:"Entrée",score:0},
+    {name:"Conjunctio",code:"2112",element:"Air (Vent)",nature:"Neutre / Favorable",orientation:"Intérieure",score:1},
+    {name:"Carcer",code:"1221",element:"Terre",nature:"Défavorable / Stable",orientation:"Intérieure",score:-2},
+    {name:"Fortuna Major",code:"2211",element:"Feu",nature:"Très favorable",orientation:"Entrée",score:3},
+    {name:"Fortuna Minor",code:"1122",element:"Feu",nature:"Favorable (rapide)",orientation:"Sortie",score:2},
+    {name:"Acquisitio",code:"2121",element:"Air (Vent)",nature:"Très favorable",orientation:"Entrée",score:3},
+    {name:"Amissio",code:"1212",element:"Air (Vent)",nature:"Défavorable",orientation:"Sortie",score:-2},
+    {name:"Puella",code:"1211",element:"Eau",nature:"Favorable",orientation:"Entrée",score:2},
+    {name:"Puer",code:"1121",element:"Feu",nature:"Défavorable (conflictuel)",orientation:"Sortie",score:-2},
+    {name:"Albus",code:"2212",element:"Eau",nature:"Favorable / Sage",orientation:"Entrée",score:2},
+    {name:"Rubeus",code:"1222",element:"Feu",nature:"Très défavorable",orientation:"Sortie",score:-3},
+    {name:"Laetitia",code:"2122",element:"Air (Vent)",nature:"Très favorable",orientation:"Sortie",score:3},
+    {name:"Tristitia",code:"2221",element:"Terre",nature:"Très défavorable",orientation:"Entrée",score:-3},
+    {name:"Caput Draconis",code:"2111",element:"Terre",nature:"Favorable",orientation:"Entrée",score:2},
+    {name:"Cauda Draconis",code:"1112",element:"Feu",nature:"Très défavorable",orientation:"Sortie",score:-3}
+  ];
+
+  const BY_CODE = Object.fromEntries(FIGURES.map(f => [f.code, f]));
+  const FRIEND = {
+    "Feu":["Air (Vent)"], "Air (Vent)":["Feu"],
+    "Eau":["Terre"], "Terre":["Eau"]
+  };
+  const ENEMY = {
+    "Feu":["Eau"], "Eau":["Feu"],
+    "Air (Vent)":["Terre"], "Terre":["Air (Vent)"]
+  };
+
+  function $(id){ return document.getElementById(id); }
+  function val(id){ const e=$(id); return e ? e.value.trim() : ""; }
+  function code(id){ return val(id).replace(/\s/g,""); }
+
+  function relation(a,b){
+    if (a===b) return "même élément";
+    if (FRIEND[a] && FRIEND[a].includes(b)) return "ami";
+    if (ENEMY[a] && ENEMY[a].includes(b)) return "ennemi";
+    return "neutre";
+  }
+
+  function renderResult(pillText, pillClass, title, body){
+    const pill=$("pill"), verdict=$("verdict"), reason=$("reason");
+    if(pill){ pill.className="pill "+pillClass; pill.textContent=pillText; }
+    if(verdict) verdict.textContent=title;
+    if(reason) reason.innerHTML=body;
+  }
+
+  function analyzeNow(){
+    const teamA=val("teamA") || "Équipe A";
+    const teamB=val("teamB") || "Équipe B";
+    const c1=code("m1Code"), c7=code("m7Code"), c16=code("m16Code");
+
+    if(!/^[12]{4}$/.test(c1)||!/^[12]{4}$/.test(c7)||!/^[12]{4}$/.test(c16)){
+      renderResult("CODE INVALIDE","bad","Saisie incomplète",
+        "M1, M7 et M16 doivent contenir exactement <b>4 chiffres</b>, uniquement <b>1</b> ou <b>2</b>.");
+      return;
+    }
+
+    const A=BY_CODE[c1], B=BY_CODE[c7], J=BY_CODE[c16];
+
+    if(!A||!B||!J){
+      renderResult("CODE NON RECONNU","bad","Figure introuvable",
+        "Un des codes ne correspond pas au référentiel des 16 figures.");
+      return;
+    }
+
+    // Affichage du tableau des trois positions.
+    const houses=$("houses");
+    if(houses){
+      houses.innerHTML=[
+        ["M1 — "+teamA,A],["M7 — "+teamB,B],["M16 — Juge",J]
+      ].map(x=>`<div class="house"><small>${x[0]}</small><b>${x[1].name}</b><span class="sig">${x[1].code}</span></div>`).join("");
+    }
+
+    const reasons=[];
+    let scoreA=0, scoreB=0;
+
+    // 1. Al-Takrâr : règle prioritaire.
+    if(J.code===A.code && J.code===B.code){
+      renderResult("ÉGALITÉ","neutral",teamA+" — "+teamB,
+        "<b>Al-Takrâr :</b> M16 est identique à M1 et M7. Le Juge représente les deux côtés.");
+      return;
+    }
+
+    if(J.code===A.code){
+      renderResult("DÉCISIF","good","🏆 "+teamA,
+        `<b>Al-Takrâr :</b> M16 (${J.code} — ${J.name}) est identique à M1. <b>Le Demandeur l'emporte.</b>`);
+      return;
+    }
+
+    if(J.code===B.code){
+      renderResult("DÉCISIF","good","🏆 "+teamB,
+        `<b>Al-Takrâr :</b> M16 (${J.code} — ${J.name}) est identique à M7. <b>L'Adversaire l'emporte.</b>`);
+      return;
+    }
+
+    // 2. Nature du Juge.
+    if(J.score>0) reasons.push(`M16 = ${J.name} : figure favorable (${J.nature}).`);
+    else if(J.score<0) reasons.push(`M16 = ${J.name} : figure défavorable (${J.nature}), donc risque de blocage/perte pour les deux.`);
+    else reasons.push(`M16 = ${J.name} : figure neutre (${J.nature}).`);
+
+    // 3. Accord élémentaire.
+    const rA=relation(J.element,A.element);
+    const rB=relation(J.element,B.element);
+
+    if(rA==="ami"){scoreA+=3; reasons.push(`M16 (${J.element}) est <b>ami</b> avec M1 (${A.element}).`);}
+    else if(rA==="ennemi"){scoreA-=3; reasons.push(`M16 (${J.element}) est <b>ennemi</b> avec M1 (${A.element}).`);}
+    else {scoreA+=1; reasons.push(`M16 (${J.element}) partage le même élément que M1 (${A.element}).`);}
+
+    if(rB==="ami"){scoreB+=3; reasons.push(`M16 (${J.element}) est <b>ami</b> avec M7 (${B.element}).`);}
+    else if(rB==="ennemi"){scoreB-=3; reasons.push(`M16 (${J.element}) est <b>ennemi</b> avec M7 (${B.element}).`);}
+    else {scoreB+=1; reasons.push(`M16 (${J.element}) partage le même élément que M7 (${B.element}).`);}
+
+    let winner=null;
+    if(scoreA>scoreB) winner="A";
+    if(scoreB>scoreA) winner="B";
+
+    const details=
+      `<b>M1 — ${teamA}</b> : ${A.name} · ${A.code} · ${A.element}<br>`+
+      `<b>M7 — ${teamB}</b> : ${B.name} · ${B.code} · ${B.element}<br>`+
+      `<b>M16 — Juge</b> : ${J.name} · ${J.code} · ${J.element}<br><br>`+
+      `<b>Lecture du Juge :</b><br>• ${reasons.join("<br>• ")}<br><br>`+
+      `<b>Score élémentaire :</b> A = ${scoreA} · B = ${scoreB}`;
+
+    if(winner==="A") renderResult("VERDICT DU JUGE","good","🏆 "+teamA,details);
+    else if(winner==="B") renderResult("VERDICT DU JUGE","good","🏆 "+teamB,details);
+    else renderResult(J.score<0?"BLOCAGE / INDÉCIS":"INDÉCIS","neutral","⚖️ "+teamA+" — "+teamB,details);
+  }
+
+  function bind(){
+    // Search for the real analyze button instead of assuming an id.
+    const btn=document.getElementById("runAnalysis");
+    if(btn){
+      btn.type="button";
+      btn.onclick=null;
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        try{ analyzeNow(); }
+        catch(err){
+          console.error(err);
+          renderResult("ERREUR","bad","Erreur du moteur",
+            "Le moteur a rencontré une erreur JavaScript : <b>"+String(err.message||err)+"</b>");
+        }
+      });
+    }
+
+    ["m1Code","m7Code","m16Code"].forEach(id=>{
+      const el=$(id);
+      if(!el)return;
+      el.addEventListener("input",()=>{el.value=el.value.replace(/[^12]/g,"").slice(0,4);});
+      el.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();analyzeNow();}});
+    });
+  }
+
+  window.analyzeNow=analyzeNow;
+  window.analyze=analyzeNow;
+
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",bind);
+  else bind();
+})();
+</script>
+
+</body>
+</html>
